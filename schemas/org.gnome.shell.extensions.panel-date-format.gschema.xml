@@ -5,5 +5,10 @@
       <summary>Format</summary>
       <description>Format for the clock. Syntax https://developer.gnome.org/glib/stable/glib-GDateTime.html#g-date-time-format</description>
     </key>
+    <key name="text-alignment" type="s">
+      <default>"center"</default>
+      <summary>Text Alignment</summary>
+      <description>Text alignment for the clock (left/center/right). Only relevant for multi line date/times.</description>
+    </key>
   </schema>
 </schemalist>

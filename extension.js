@@ -29,10 +29,20 @@ export default class PanelDateFormatExtension extends Extension {
     // FIXME: Set settings first time to make it visible in dconf Editor
     if (!settings.get_string("format")) {
       settings.set_string("format", "%Y.%m.%d %H:%M");
+      settings.set_string("text-alignment", "center");
     }
     
     allPanels.forEach((currentPanel) => {
-      let formatClockDisplay = new St.Label({ style_class: "clock" });
+      let formatOptions = { style_class: "clock", style: "text-align: center" };
+      let textAlignment = settings.get_string("text-alignment");
+      
+      if (textAlignment == "left") {
+        formatOptions.style = "text-align: left";
+      } else if (textAlignment == "right") {
+        formatOptions.style = "text-align: right";
+      }
+      
+      let formatClockDisplay = new St.Label(formatOptions);
       formatClockDisplay.clutter_text.y_align = Clutter.ActorAlign.CENTER;
       formatClockDisplay.clutter_text.ellipsize = Pango.EllipsizeMode.NONE;
 
